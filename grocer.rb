@@ -43,60 +43,35 @@ def apply_clearance(cart)
   cart
 end
 
-def apply_clearance(cart)
-
- 
-  cart.each do |item, details|
-    if cart[item][:clearance] == true
-      cart[item][:price] = (cart[item][:price]*0.20 - total)
-    end
-  end
-  cart
-end
-
-def apply_clearance(cart)
-  # code here
-  discount = 0.20
-  cart.each do |item, details|
-    if cart[item][:clearance] == true
-      cart[item][:price] = (cart[item][:price]*discount).round(1)
-    end
-  end
-  cart
-end
-
-def checkout(cart: [], coupons: [])
-  # code here
-  total = 0
+def checkout(cart, coupons)
+  total = 0 
   cart = consolidate_cart(cart)
   
   if cart.length == 1
     cart = apply_coupons(cart, coupons)
     cart_clearance = apply_clearance(cart)
-    if cart_clearance.length > 1
+    if cart_clearance.length > 1 
       cart_clearance.each do |item, details|
-        if details[:count] >=1
+        if details[:count] >= 1 
           total += (details[:price]*details[:count])
-        end
+        end  
       end
-    else
+      binding.pry
+    else 
       cart_clearance.each do |item, details|
         total += (details[:price]*details[:count])
       end
     end
   else
-    cart = apply_coupons(cart, coupons)
+    cart = apply_clearance(cart, coupons)
     cart_clearance = apply_clearance(cart)
     cart_clearance.each do |item, details|
-      total += (details[:price]*details[:count])
+      total += (details)[:price]*details[:count])
     end
   end
   
-
   if total > 100
     total = total*(0.90)
   end
   total
-
-
 end
