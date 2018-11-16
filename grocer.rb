@@ -53,7 +53,8 @@ def checkout(cart, coupons)
     if cart_clearance.length > 1 
     cart_clearance.each do |item, details|
       if details[:count] >= 1 
-        tot
+        total += (details[:price]*details[:count])
+        binding.pry
       end  
     end 
   end
