@@ -56,11 +56,12 @@ def checkout(cart, coupons)
         total += (details[:price]*details[:count])
       end  
     end 
-    else 
-    cart_clearance.each do |item, details|
-      total += (details[:price]*details[:count])
+      else 
+      cart_clearance.each do |item, details|
+        total += (details[:price]*details[:count])
+      end
     end
-  end
+  else
   
   
 end
