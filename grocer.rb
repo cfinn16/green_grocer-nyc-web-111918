@@ -51,12 +51,12 @@ def checkout(cart, coupons)
     cart = apply_coupons(cart, coupons)
     cart_clearance = apply_clearance(cart)
     if cart_clearance.length > 1 
-    cart_clearance.each do |item, details|
-      if details[:count] >= 1 
-        total += (details[:price]*details[:count])
-      end  
-    end 
-      else 
+      cart_clearance.each do |item, details|
+        if details[:count] >= 1 
+          total += (details[:price]*details[:count])
+        end  
+      end 
+    else 
       cart_clearance.each do |item, details|
         total += (details[:price]*details[:count])
       end
