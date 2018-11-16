@@ -45,7 +45,9 @@ end
 
 def checkout(cart, coupons)
   total = 0 
+  cart = consolidate_cart(cart)
   
+  if cart.length
   
   clearanced_cart.flatten
 end
