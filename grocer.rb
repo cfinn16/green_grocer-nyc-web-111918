@@ -46,5 +46,5 @@ end
 def checkout(cart, coupons)
   couponed_cart = apply_coupons(cart, coupons)
   clearanced_cart = apply_clearance(couponed_cart)
-  clearanced_cart.each do 
+  clearanced_cart.flatten
 end
