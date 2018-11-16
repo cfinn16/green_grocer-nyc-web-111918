@@ -44,11 +44,7 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  updated_cart = nil
-  unless coupons.nil? 
-    updated_cart = apply_coupons(cart, coupons)
-  end
-    updated_cart = apply_clearance(cart)
-   
-  binding.pry
+  couponed_cart = apply_coupons(cart, coupons)
+  updated_cart = apply_clearance(couponed_cart)
+  
 end
